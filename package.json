@@ -1,0 +1,14 @@
+{
+  "name": "sample-project",
+  "version": "1.0.0",
+  "description": "Sample project for a tech interview",
+  "scripts": {
+    "test": "cypress run",
+    "cy:open": "cypress open"
+  },
+  "author": "Walmyr Filho <wlsf82@gmail.com> (https://walmyr.dev)",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^6.8.0"
+  }
+}
