@@ -10,5 +10,15 @@
   "license": "MIT",
   "devDependencies": {
     "cypress": "^6.8.0"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaabc/tech-interview-sample-project.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/rafaabc/tech-interview-sample-project/issues"
+  },
+  "homepage": "https://github.com/rafaabc/tech-interview-sample-project#readme"
 }

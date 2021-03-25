@@ -1,3 +1,4 @@
+/// <reference types="Cypress"/>
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -23,3 +24,31 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('login', () => {
+  cy.visit('/');
+  cy.get('.navbar-nav a:contains(Login)').click();
+  cy.get('#email').type(Cypress.env('user'));
+  cy.get('#password').type(Cypress.env('password'));
+  cy.get('button[type="submit"]').click();
+})
+
+Cypress.Commands.add('createsANote', data => {
+  cy.contains('Create a new note', { timeout: 30000 }).should('be.visible').click();
+  cy.get('#content').type(data.content);
+  cy.contains('Create').click();
+  cy.get('.list-group').should('contain', data.content);
+})
+
+Cypress.Commands.add('editsANote', data => {
+  cy.get('.list-group').contains(data.content).click();
+  cy.get('#content').clear().type(data.newContent);
+  cy.contains('Save').click();
+  cy.get('.list-group').should('contain', data.newContent);
+  cy.get(`.list-group:contains(${data.newContent})`).should('be.visible');
+})
+
+Cypress.Commands.add('deletesANote', data => {
+  cy.get('.list-group').contains(data.newContent).click()
+  cy.contains('Delete').click()
+  cy.get(`.list-group:contains(${data.newContent})`).should('not.exist')
+})
