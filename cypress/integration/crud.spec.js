@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe('Notes', () => {
-  beforeEach(() => cy.login(Cypress.env('user'), Cypress.env('password')))
+  beforeEach(() => cy.login())
   
   it('Creates, edits and deletes a note', () => {    
     const data = {
