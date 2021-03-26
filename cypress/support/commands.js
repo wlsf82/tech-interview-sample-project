@@ -32,7 +32,7 @@ Cypress.Commands.add('login', (user = {
   cy.get('#email').should('be.visible').type(user.email)
   cy.get('#password').should('be.visible').type(user.password)
   cy.get('button[type="submit"]').should('be.visible').click()
-  cy.location('href').should('equal', 'https://notes-serverless-app.com/')
+  cy.url().should('eq', 'https://notes-serverless-app.com/')  
 })
 
 Cypress.Commands.add('createsANote', data => {
@@ -44,8 +44,8 @@ Cypress.Commands.add('createsANote', data => {
 
 Cypress.Commands.add('editsANote', data => {
   cy.get('.list-group').contains(data.content).should('be.visible').click()
-  cy.get('#content').clear().type(data.newContent)
-  cy.contains('Save').click()
+  cy.get('#content').should('be.visible').clear().type(data.newContent)
+  cy.contains('Save').should('be.visible').click()
   cy.get('.list-group').should('contain', data.newContent)
   cy.get(`.list-group:contains(${data.newContent})`).should('be.visible')
 })
