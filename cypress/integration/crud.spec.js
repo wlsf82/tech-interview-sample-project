@@ -9,8 +9,8 @@ describe('Notes', () => {
       newContent: 'My note updated'
     }
     
-    cy.createsANote(data);
-    cy.editsANote(data);
-    cy.deletesANote(data);
+    cy.createsANote(data)
+    cy.editsANote(data)
+    cy.deletesANote(data)
   })
 })  

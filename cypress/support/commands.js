@@ -24,27 +24,30 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.Commands.add('login', () => {
-  cy.visit('/');
-  cy.get('.navbar-nav a:contains(Login)').click();
-  cy.get('#email').type(Cypress.env('user'));
-  cy.get('#password').type(Cypress.env('password'));
-  cy.get('button[type="submit"]').click();
+Cypress.Commands.add('login', (user = {
+  email: Cypress.env('email'),
+  password: Cypress.env('password')
+}) => {
+  cy.visit('/login');
+  cy.get('#email').should('be.visible').type(user.email)
+  cy.get('#password').should('be.visible').type(user.password)
+  cy.get('button[type="submit"]').should('be.visible').click()
+  cy.location('href').should('equal', 'https://notes-serverless-app.com/')
 })
 
 Cypress.Commands.add('createsANote', data => {
-  cy.contains('Create a new note', { timeout: 30000 }).should('be.visible').click();
-  cy.get('#content').type(data.content);
-  cy.contains('Create').click();
-  cy.get('.list-group').should('contain', data.content);
+  cy.contains('Create a new note').should('be.visible').click()
+  cy.get('#content').should('be.visible').type(data.content)
+  cy.contains('Create').should('be.visible').click()
+  cy.get('.list-group').should('contain', data.content)
 })
 
 Cypress.Commands.add('editsANote', data => {
-  cy.get('.list-group').contains(data.content).click();
-  cy.get('#content').clear().type(data.newContent);
-  cy.contains('Save').click();
-  cy.get('.list-group').should('contain', data.newContent);
-  cy.get(`.list-group:contains(${data.newContent})`).should('be.visible');
+  cy.get('.list-group').contains(data.content).should('be.visible').click()
+  cy.get('#content').clear().type(data.newContent)
+  cy.contains('Save').click()
+  cy.get('.list-group').should('contain', data.newContent)
+  cy.get(`.list-group:contains(${data.newContent})`).should('be.visible')
 })
 
 Cypress.Commands.add('deletesANote', data => {
