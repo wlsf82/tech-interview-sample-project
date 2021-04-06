@@ -3,15 +3,15 @@
 describe('Notes', () => {
   before(() => {
     cy.login()
-    cy.url().should('eq', 'https://notes-serverless-app.com/')
+    cy.url({timeout: 5000}).should('eq', 'https://notes-serverless-app.com/')
   })
-
+    
   it("Creates, edits and deletes a note", () => {
     const data = {
       content: 'My note',
       newContent: 'My note updated'
     }
-
+    
     cy.createsANote(data)
     cy.get('.list-group').should('contain', data.content)
 
