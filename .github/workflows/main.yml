@@ -17,3 +17,4 @@ jobs:
         with:
           # Specify Browser since container image is compile with Firefox
           browser: chrome
+          config-file: cypress.env.json
