@@ -2,8 +2,7 @@
 
 describe('Notes', () => {
   before(() => {
-    cy.login()
-    cy.url({timeout: 5000}).should('eq', 'https://notes-serverless-app.com/')
+    cy.login()    
   })
     
   it("Creates, edits and deletes a note", () => {
