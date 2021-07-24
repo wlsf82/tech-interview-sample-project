@@ -30,8 +30,8 @@ Cypress.Commands.add('login', () => {
     cy.visit('')
 
     cy.contains('.navbar-nav a', 'Login').click()
-    cy.get('#email').type(Cypress.env('user_mail'))
-    cy.get('#password').type(Cypress.env('password'))
+    cy.get('#email').type(Cypress.env('user_mail'), {log: false})
+    cy.get('#password').type(Cypress.env('password'), {log: false})
     cy.get('button[type="submit"]').click()
 })
 
