@@ -34,8 +34,6 @@ Cypress.Commands.add('login', () => {
     cy.get('button[type="submit"]').click()
 })
 
-const noteText = 'My note'
-
 Cypress.Commands.add('createNote', () => {
     cy.contains('Create a new note').click()
 
