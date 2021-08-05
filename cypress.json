@@ -1,4 +1,3 @@
 {
-    "baseUrl": "http://notes-serverless-app.com",
-    "watchForFileChanges": false
+    "baseUrl": "http://notes-serverless-app.com"
 }

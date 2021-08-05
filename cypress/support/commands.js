@@ -23,3 +23,35 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', () => {
+    
+    cy.visit('')
+
+    cy.contains('.navbar-nav a', 'Login').click()
+    cy.get('#email').type(Cypress.env('user_mail'), {log: false})
+    cy.get('#password').type(Cypress.env('password'), {log: false})
+    cy.get('button[type="submit"]').click()
+})
+
+const noteText = 'My note'
+
+Cypress.Commands.add('createNote', () => {
+    cy.contains('Create a new note').click()
+
+    cy.get('#content').type(noteText)
+    cy.contains('Create').click()
+})
+
+Cypress.Commands.add('editNote', () => {
+    cy.get('.list-group').contains(noteText).click()
+
+    cy.get('#content').type(' updated')
+    cy.contains('Save').click()
+})
+
+
+Cypress.Commands.add('deleteCreatedNote', () => {
+    cy.get('.list-group').contains(`${noteText} updated`).click()
+    cy.contains('Delete').click()
+})
