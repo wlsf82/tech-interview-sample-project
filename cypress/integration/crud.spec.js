@@ -8,14 +8,14 @@ describe('Notes', () => {
       annotation: 'My note',
       newAnnotation: 'My note updated'
     }
-    cy.createNote()
+    cy.createNote(text)
     cy.get('.list-group').should('contain', text.annotation)
  
-    cy.editNote()
+    cy.editNote(text)
     cy.get('.list-group').should('contain', text.newAnnotation)
     cy.get('.list-group').contains(text.newAnnotation).should('be.visible')   
 
-    cy.deleteCreatedNote()
+    cy.deleteCreatedNote(text)
     cy.get('.list-group').contains(text.newAnnotation).should('not.exist')
   })
 })

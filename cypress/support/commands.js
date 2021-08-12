@@ -34,22 +34,22 @@ Cypress.Commands.add('login', () => {
     cy.get('button[type="submit"]').click()
 })
 
-Cypress.Commands.add('createNote', () => {
+Cypress.Commands.add('createNote', text => {
     cy.contains('Create a new note').click()
 
-    cy.get('#content').type(noteText)
+    cy.get('#content').type(text.annotation)
     cy.contains('Create').click()
 })
 
-Cypress.Commands.add('editNote', () => {
-    cy.get('.list-group').contains(noteText).click()
+Cypress.Commands.add('editNote', text => {
+    cy.get('.list-group').contains(text.annotation).click()
 
     cy.get('#content').type(' updated')
     cy.contains('Save').click()
 })
 
 
-Cypress.Commands.add('deleteCreatedNote', () => {
-    cy.get('.list-group').contains(`${noteText} updated`).click()
+Cypress.Commands.add('deleteCreatedNote', text => {
+    cy.get('.list-group').contains(text.newAnnotation).click()
     cy.contains('Delete').click()
 })
