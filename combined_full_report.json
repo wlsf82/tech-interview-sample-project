@@ -1,0 +1,165 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-08-12T22:58:51.141Z",
+    "end": "2021-08-12T23:14:43.749Z",
+    "duration": 42081,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6c436b4a-288f-484f-b916-463a55147fd6",
+      "title": "",
+      "fullFile": "cypress/integration/crud.spec.js",
+      "file": "cypress/integration/crud.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "77b45283-655a-4f19-b0f3-7913c5094582",
+          "title": "Notes",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create , edit and delete a note",
+              "fullTitle": "Notes Create , edit and delete a note",
+              "timedOut": null,
+              "duration": 21712,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var text = {\n  annotation: 'My note',\n  newAnnotation: 'My note updated'\n};\ncy.createNote(text);\ncy.get('.list-group').should('contain', text.annotation);\ncy.editNote(text);\ncy.get('.list-group').should('contain', text.newAnnotation);\ncy.get('.list-group').contains(text.newAnnotation).should('be.visible');\ncy.deleteCreatedNote(text);\ncy.get('.list-group').contains(text.newAnnotation).should('not.exist');",
+              "err": {},
+              "uuid": "4daabfa1-71f3-4219-9bb8-208a93667d8f",
+              "parentUUID": "77b45283-655a-4f19-b0f3-7913c5094582",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4daabfa1-71f3-4219-9bb8-208a93667d8f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 21712,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "94e1139a-3003-459c-919d-4b2f849291ae",
+      "title": "",
+      "fullFile": "cypress/integration/crud.spec.js",
+      "file": "cypress/integration/crud.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "73024b12-f6ed-4e72-9be9-2eab0c43ca92",
+          "title": "Notes",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create , edit and delete a note",
+              "fullTitle": "Notes Create , edit and delete a note",
+              "timedOut": null,
+              "duration": 20369,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var text = {\n  annotation: 'My note',\n  newAnnotation: 'My note updated'\n};\ncy.createNote(text);\ncy.get('.list-group').should('contain', text.annotation);\ncy.editNote(text);\ncy.get('.list-group').should('contain', text.newAnnotation);\ncy.get('.list-group').contains(text.newAnnotation).should('be.visible');\ncy.deleteCreatedNote(text);\ncy.get('.list-group').contains(text.newAnnotation).should('not.exist');",
+              "err": {},
+              "uuid": "d2ff03d7-2e2d-439b-af2b-fb4bb5dd94b4",
+              "parentUUID": "73024b12-f6ed-4e72-9be9-2eab0c43ca92",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d2ff03d7-2e2d-439b-af2b-fb4bb5dd94b4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 20369,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "mochawesome-report",
+        "quiet": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}

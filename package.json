@@ -4,11 +4,19 @@
   "description": "Sample project for a tech interview",
   "scripts": {
     "test": "cypress run",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "report:merge": "mochawesome-merge > combined_full_report.json",
+    "report:mocha": "marge combined_full_report.json",
+    "report:clean": "rm -rf mochawesome-report"
   },
   "author": "Walmyr Filho <wlsf82@gmail.com> (https://walmyr.dev)",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "^6.8.0"
+    "cypress": "^6.8.0",
+    "cypress-multi-reporters": "^1.5.0",
+    "mocha": "^9.0.3",
+    "mochawesome": "^6.2.2",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.2.0"
   }
 }
