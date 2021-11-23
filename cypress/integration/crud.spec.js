@@ -1,36 +1,21 @@
+import locators from "../commons/locators";
+
 describe('Notes', () => {
   beforeEach(() => {
-    cy.visit('http://notes-serverless-app.com')
-
-    cy.get('.navbar-nav a:contains(Login)').click()
-
-    cy.get('#email').type(Cypress.env('user'))
-    cy.get('#password').type(Cypress.env('password'))
-    cy.get('button[type="submit"]').click()
+    cy.visit('/')    
+    cy.loginAs()
+    cy.url().should('be.equal', `${Cypress.config('baseUrl')}/login`)
   })
 
-  it('creates a note', () => {
-    cy.contains('Create a new note').click()
+  it('should validate crud flow successfully', () => {    
+    cy.createANote();
+    cy.get(locators.NOTES.LIST_GROUP).should('contain', 'My note');
 
-    cy.get('#content').type('My note')
-    cy.contains('Create').click()
+    cy.editANote();
+    cy.get(locators.NOTES.LIST_GROUP).should('contain', 'My note updated');
+    cy.get(locators.NOTES.LIST_GROUP_UPDATED).should('be.visible');
 
-    cy.get('.list-group').should('contain', 'My note')
-  })
-
-  it('edits a note', () => {
-    cy.get('.list-group').contains('My note').click()
-    cy.get('#content').type(' updated')
-    cy.contains('Save').click()
-
-    cy.get('.list-group').should('contain', 'My note updated')
-    cy.get('.list-group:contains(My note updated)').should('be.visible')
-  })
-
-  it('deletes a note', () => {
-    cy.get('.list-group').contains('My note updated').click()
-    cy.contains('Delete').click()
-
-    cy.get('.list-group:contains(My note updated)').should('not.exist')
+    cy.deleteANote();
+    cy.get(locators.NOTES.LIST_GROUP_UPDATED).should('not.exist');
   })
 })
