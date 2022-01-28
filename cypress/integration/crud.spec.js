@@ -2,9 +2,7 @@ import { NOTES } from "../commons/locators";
 
 describe('Notes', () => {
   beforeEach(() => {
-    cy.visit('/')    
     cy.login()
-    cy.url().should('be.equal', `${Cypress.config('baseUrl')}/login`)
   })
 
   it('should validate crud flow successfully', () => { 

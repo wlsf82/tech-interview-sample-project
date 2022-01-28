@@ -17,6 +17,7 @@
 import { LOGIN, NOTES } from '../commons/locators';
 
 Cypress.Commands.add('login', (email = Cypress.env('email'), password = Cypress.env('password')) => {    
+    cy.visit('/')
     cy.get(LOGIN.LINK_LOGIN).click()
     cy.get(LOGIN.EMAIL).type(email)
     cy.get(LOGIN.PASSWORD).type(password, { log: false })
