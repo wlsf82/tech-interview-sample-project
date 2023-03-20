@@ -4,8 +4,8 @@ describe('Notes', () => {
 
     cy.get('.navbar-nav a:contains(Login)').click()
 
-    cy.get('#email').type(Cypress.env('user'))
-    cy.get('#password').type(Cypress.env('password'))
+    cy.get('#email').type(Cypress.env('USER_EMAIL'))
+    cy.get('#password').type(Cypress.env('USER_PASSWORD'))
     cy.get('button[type="submit"]').click()
   })
 
