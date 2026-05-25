@@ -4,9 +4,11 @@ describe('Notes', () => {
 
     cy.get('.navbar-nav a:contains(Login)').click()
 
-    cy.get('#email').type(Cypress.env('USER_EMAIL'))
-    cy.get('#password').type(Cypress.env('USER_PASSWORD'))
-    cy.get('button[type="submit"]').click()
+    cy.env(['USER_EMAIL', 'USER_PASSWORD']).then(({ USER_EMAIL, USER_PASSWORD }) => {
+      cy.get('#email').type(USER_EMAIL)
+      cy.get('#password').type(USER_PASSWORD)
+      cy.get('button[type="submit"]').click()
+    })
   })
 
   it('creates a note', () => {
